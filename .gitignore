@@ -1,0 +1,12 @@
+.direnv
+*.pdf
+
+# LaTeX build artifacts
+src/*.aux
+src/*.fdb_latexmk
+src/*.fls
+src/*.log
+src/*.out
+
+# Generated site output (produced by build.sh / nix build)
+site/

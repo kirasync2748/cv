@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\usepackage{hyperref}
+
+\definecolor{accent}{HTML}{2c5f8a}
+\definecolor{muted}{HTML}{666666}
+\definecolor{light}{HTML}{999999}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent,
+  pdfborderstyle={/S/U/W 0}
+}
+
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0pt}{}[{\vspace{2pt}\titlerule[0.5pt]}]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+
+\newcommand{\role}[2]{%
+  \noindent\textbf{#1}\ \textcolor{muted}{— #2}%
+}
+
+\newcommand{\dateright}[1]{%
+  \hfill\textcolor{light}{\small #1}%
+}
+
+\newcommand{\location}[1]{%
+  \par{\small\color{light} #1\par}%
+}
+
+\newcommand{\bullets}[1]{%
+  \vspace{2pt}%
+  \begin{itemize}[leftmargin=14pt,nosep,itemsep=2pt,topsep=2pt]%
+    #1%
+  \end{itemize}%
+  \vspace{6pt}%
+}
+
+\begin{document}
+
+% Header
+\begin{center}
+  {\LARGE\bfseries Your Name}\\[3pt]
+  {\large\color{accent} Software Engineer — Distributed Systems \& Open Source}\\[6pt]
+  {\small\color{muted}
+    Your City, Country \quad|\quad
+    +1 555 000 0000 \quad|\quad
+    \href{mailto:your.email@example.com}{your.email@example.com} \quad|\quad
+    your-github \quad|\quad
+    your-linkedin
+  }
+\end{center}
+
+\vspace{4pt}
+\hrule height 1.2pt
+\vspace{8pt}
+
+\section*{Experience}
+
+\role{Senior Software Engineer}{Fastly}\dateright{2023 — Present}
+\location{London}
+\bullets{
+  \item Building edge compute platform handling 40M+ requests per second
+  \item Led migration of internal tooling from Python to Go, reducing latency by 60\%
+  \item Mentor for two graduate engineers
+}
+
+\role{Software Engineering Intern}{Anthropic}\dateright{2022 — 2023}
+\location{London}
+\bullets{
+  \item Developed distributed training pipeline for large language models
+  \item Optimised data loading, reducing training time by 35\%
+  \item Presented findings to team of 20+ researchers
+}
+
+\role{Research Assistant}{University of Bristol}\dateright{2021 — 2022}
+\location{Bristol}
+\bullets{
+  \item Investigated Byzantine fault-tolerant consensus algorithms
+  \item Co-authored paper published at OPODIS 2022
+  \item Implemented prototype in Rust
+}
+
+\role{Teaching Assistant}{University of Bristol}\dateright{2020 — 2021}
+\location{Bristol}
+\bullets{
+  \item Data Structures \& Algorithms course (200+ students)
+  \item Held weekly tutorials and marked coursework
+  \item Received 4.8/5 student satisfaction rating
+}
+
+\section*{Education}
+
+\role{MEng Computer Science}{University of Bristol}\dateright{2019 — 2023}
+\location{First Class Honours}
+\bullets{
+  \item Thesis: ``Byzantine Fault Tolerance in Peer-to-Peer Networks''
+  \item Dean's List 2021 and 2022
+}
+
+\role{A-Levels}{Clifton College}\dateright{2013 — 2019}
+\location{Bristol}
+\bullets{
+  \item Mathematics A*, Further Mathematics A*, Physics A*, Chemistry A
+}
+
+\section*{Projects}
+
+\role{Tempest}{your-github/your-project}\dateright{2022 — Present}
+\bullets{
+  \item Distributed task scheduler in Rust — 2,400+ stars on GitHub
+  \item Used by three companies in their internal infrastructure
+  \item Featured in Rust Community Spotlight
+}
+
+\role{Beacon}{your-github/your-project}\dateright{2021 — Present}
+\bullets{
+  \item Static site generator with live preview, written in Go
+  \item Zero external dependencies; builds sites in under 100ms
+  \item 800+ stars on GitHub
+}
+
+\role{Prism}{your-github/your-project}\dateright{2020 — Present}
+\bullets{
+  \item Terminal-based colour palette generator
+  \item Extracts dominant colours from images; outputs CSS, JSON, ANSI
+  \item 300+ stars on GitHub
+}
+
+\section*{Skills}
+
+\noindent
+\textbf{Languages:} Go, Rust, Python, TypeScript, C, Haskell\\[2pt]
+\textbf{Infrastructure:} Docker, Kubernetes, Terraform, Nix, Nomad\\[2pt]
+\textbf{Cloud:} AWS, GCP, Cloudflare Workers\\[2pt]
+\textbf{Databases:} PostgreSQL, Redis, Cassandra, SQLite\\[2pt]
+\textbf{Observability:} Prometheus, Grafana, OpenTelemetry
+
+\vspace{8pt}
+
+\section*{Languages}
+
+\noindent
+English (Native) \quad|\quad French (Fluent — CEFR C1) \quad|\quad Spanish (Intermediate — CEFR B2) \quad|\quad German (Conversational — CEFR B1)
+
+\vspace{8pt}
+
+\section*{Awards}
+
+\noindent
+Dean's List, Bristol (2021, 2022) \quad|\quad Google Step Internship Award (2022)\\[2pt]
+Best Project, Bristol Tech Hack (2021) \quad|\quad ACM ICPC Regional Finalist (2022)\\[2pt]
+British Informatics Olympiad Finalist (2019)
+
+\vspace{8pt}
+
+\section*{Interests}
+
+\noindent
+Open-source contribution \quad|\quad Hill walking \& Munro bagging \quad|\quad Classical guitar \quad|\quad Competitive chess (ECF rated)
+
+\end{document}

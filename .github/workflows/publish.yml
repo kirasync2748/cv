@@ -1,0 +1,69 @@
+name: Build and publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            cm-super \
+            latexmk \
+            poppler-utils \
+            imagemagick
+
+      - name: Install Typst
+        run: |
+          curl -sSL https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz -o /tmp/typst.tar.xz
+          mkdir -p /tmp/typst
+          tar -xJf /tmp/typst.tar.xz -C /tmp/typst --strip-components=1
+          sudo mv /tmp/typst/typst /usr/local/bin/typst
+          sudo chmod +x /usr/local/bin/typst
+
+      - name: Build
+        run: chmod +x build.sh && ./build.sh
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: cv-pdfs
+          path: site/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: site
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5.0.1
+        id: deployment
